@@ -10,6 +10,7 @@
         <module>eureka</module>
         <module>client</module>
         <module>product</module>
+        <module>order</module>
     </modules>
     <packaging>pom</packaging>
 
