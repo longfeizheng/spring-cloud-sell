@@ -8,6 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>eureka</module>
+        <module>client</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -86,6 +87,5 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
 
 </project>

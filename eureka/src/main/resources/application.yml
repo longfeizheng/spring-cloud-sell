@@ -6,6 +6,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/  #注册自己本身否则会报  Cannot execute request on any known server
+    register-with-eureka: false #自己不出现在注册列表里面
   server:
-    rate-limiter-enabled: false
+    enable-self-preservation: false #开发环境关闭，生产切莫关闭 自我保护
