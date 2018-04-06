@@ -2,6 +2,7 @@ package cn.merryyou.product.controller;
 
 import cn.merryyou.product.dataobject.ProductCategory;
 import cn.merryyou.product.dataobject.ProductInfo;
+import cn.merryyou.product.dto.CardDTO;
 import cn.merryyou.product.service.CategoryService;
 import cn.merryyou.product.service.ProductService;
 import cn.merryyou.product.utils.ResultVOUtil;
@@ -10,9 +11,7 @@ import cn.merryyou.product.vo.ProductVO;
 import cn.merryyou.product.vo.ResultVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +43,7 @@ public class ProductController {
     @GetMapping("/list")
     public ResultVO<ProductVO> list() {
 
+
         List<ProductInfo> productInfoList = productService.findUpAll();
         List<Integer> categoryTypeList = productInfoList.stream()
                 .map(ProductInfo::getCategoryType)
@@ -69,6 +69,26 @@ public class ProductController {
 
             productVOList.add(productVO);
         }
-       return  ResultVOUtil.success(productVOList);
+        return ResultVOUtil.success(productVOList);
+    }
+
+    /**
+     * 获取商品列表（订单服务需要）
+     *
+     * @param productIdList
+     * @return
+     */
+    @PostMapping("/listForOrder")
+    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
+        return productService.findList(productIdList);
+    }
+
+    /**
+     * 扣库存
+     * @param cardDTOList
+     */
+    @PostMapping("/decreaseStock")
+    public void decreaseStock(@RequestBody List<CardDTO> cardDTOList) {
+        productService.decreaseStock(cardDTOList);
     }
 }

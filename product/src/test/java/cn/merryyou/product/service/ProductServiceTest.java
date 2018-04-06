@@ -2,11 +2,13 @@ package cn.merryyou.product.service;
 
 import cn.merryyou.product.ProductTests;
 import cn.merryyou.product.dataobject.ProductInfo;
+import cn.merryyou.product.dto.CardDTO;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +19,7 @@ import java.util.List;
  * @since 1.0
  */
 @Component
-public class ProductApplicationTests extends ProductTests {
+public class ProductServiceTest extends ProductTests {
 
     @Autowired
     private ProductService productService;
@@ -26,5 +28,16 @@ public class ProductApplicationTests extends ProductTests {
     public void findUpAll() throws Exception {
         List<ProductInfo> productInfoList = productService.findUpAll();
         Assert.assertTrue(productInfoList.size() > 0);
+    }
+    @Test
+    public void findListTest() throws Exception{
+        List<ProductInfo> productInfoList = productService.findList(Arrays.asList("157875196366160022", "157875227953464068"));
+        Assert.assertTrue(productInfoList.size() > 0);
+    }
+
+    @Test
+    public void decreaseStockTest() throws Exception{
+        CardDTO cardDTO = new CardDTO("157875196366160022",2);
+        productService.decreaseStock(Arrays.asList(cardDTO));
     }
 }
