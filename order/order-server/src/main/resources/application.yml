@@ -22,3 +22,6 @@
 #PRODUCT:
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+management:
+  security:
+    enabled: false

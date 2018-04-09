@@ -7,7 +7,7 @@ spring:
         git:
           uri: https://github.com/longfeizheng/spring-cloud-sell
           username: i@merryyou.cn
-          password: 837691512zheng
+          password:
           search-paths: config-repo
 #          basedir:
 eureka:
