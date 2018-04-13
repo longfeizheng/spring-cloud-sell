@@ -7,3 +7,8 @@ spring:
         enabled: true
         service-id: CONFIG
       profile: dev
+    stream:
+      bindings:
+        myMessage:
+          group: order  #消息的分组
+          content-type: application/json  #在mq中以json形式展示发送的消息
