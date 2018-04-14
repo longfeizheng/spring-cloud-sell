@@ -1,8 +1,8 @@
 package cn.merryyou.product.service;
 
 import cn.merryyou.product.ProductTests;
+import cn.merryyou.product.common.DecreaseStockInput;
 import cn.merryyou.product.dataobject.ProductInfo;
-import cn.merryyou.product.dto.CardDTO;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class ProductServiceTest extends ProductTests {
 
     @Test
     public void decreaseStockTest() throws Exception{
-        CardDTO cardDTO = new CardDTO("157875196366160022",2);
+        DecreaseStockInput cardDTO = new DecreaseStockInput("157875196366160022",2);
         productService.decreaseStock(Arrays.asList(cardDTO));
     }
 }

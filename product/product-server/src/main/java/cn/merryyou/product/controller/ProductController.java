@@ -1,8 +1,8 @@
 package cn.merryyou.product.controller;
 
+import cn.merryyou.product.common.DecreaseStockInput;
 import cn.merryyou.product.dataobject.ProductCategory;
 import cn.merryyou.product.dataobject.ProductInfo;
-import cn.merryyou.product.dto.CardDTO;
 import cn.merryyou.product.service.CategoryService;
 import cn.merryyou.product.service.ProductService;
 import cn.merryyou.product.utils.ResultVOUtil;
@@ -85,10 +85,10 @@ public class ProductController {
 
     /**
      * 扣库存
-     * @param cardDTOList
+     * @param productInfoList
      */
     @PostMapping("/decreaseStock")
-    public void decreaseStock(@RequestBody List<CardDTO> cardDTOList) {
-        productService.decreaseStock(cardDTOList);
+    public void decreaseStock(@RequestBody List<DecreaseStockInput> productInfoList) {
+        productService.decreaseStock(productInfoList);
     }
 }

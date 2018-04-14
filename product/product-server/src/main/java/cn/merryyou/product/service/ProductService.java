@@ -1,7 +1,7 @@
 package cn.merryyou.product.service;
 
+import cn.merryyou.product.common.DecreaseStockInput;
 import cn.merryyou.product.dataobject.ProductInfo;
-import cn.merryyou.product.dto.CardDTO;
 
 import java.util.List;
 
@@ -30,5 +30,5 @@ public interface ProductService {
     /**
      * 扣库存
      */
-    void decreaseStock(List<CardDTO> cardDTOList);
+    void decreaseStock(List<DecreaseStockInput> productInfoList);
 }

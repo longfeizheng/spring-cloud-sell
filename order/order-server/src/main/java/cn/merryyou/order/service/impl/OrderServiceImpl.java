@@ -1,6 +1,5 @@
 package cn.merryyou.order.service.impl;
 
-import cn.merryyou.order.dataobject.CardDTO;
 import cn.merryyou.order.dataobject.OrderDetail;
 import cn.merryyou.order.dataobject.OrderMaster;
 import cn.merryyou.order.dto.OrderDTO;
@@ -51,6 +50,10 @@ public class OrderServiceImpl implements OrderService {
          * 4. 扣库存（调用商品服务）
          * 5. 订单入库
          */
+
+        //1. 读redis
+        //2. 减库存并将新值重新设置进redis (考虑分布式情况需要加锁)
+        //3. 订单入库异常 ，手动回滚 redis(try catch  如果抛出异常，把减掉的库存重新加上)
         String orderId = KeyUtil.genUniqueKey();
         List<String> productIdList = orderDTO.getOrderDetailList().stream()
                 .map(OrderDetail::getProductId)
