@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: admin
+    url: jdbc:mysql://127.0.0.1/spring-cloud-sell?characterEncoding=utf-8&userSSL=false
+  jpa:
+    show-sql: true
+  redis:
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        min-idle: 0
+        max-idle: 8
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
