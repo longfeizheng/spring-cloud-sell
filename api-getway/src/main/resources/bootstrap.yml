@@ -7,7 +7,16 @@ spring:
         enabled: true
         service-id: CONFIG
       profile: dev
+  redis:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        min-idle: 0
+        max-idle: 8
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+zuul:
+  sensitive-headers:

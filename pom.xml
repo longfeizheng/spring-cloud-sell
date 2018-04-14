@@ -13,6 +13,7 @@
         <module>order</module>
         <module>config</module>
         <module>api-getway</module>
+        <module>user</module>
     </modules>
     <packaging>pom</packaging>
 

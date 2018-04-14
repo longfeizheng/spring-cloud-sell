@@ -41,6 +41,7 @@ public class ProductController {
      * 4. 构造函数
      */
     @GetMapping("/list")
+    @CrossOrigin(allowCredentials = "true")//允许cookie跨域
     public ResultVO<ProductVO> list() {
 
 
