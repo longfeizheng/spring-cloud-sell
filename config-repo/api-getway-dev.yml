@@ -1,0 +1,17 @@
+zuul:
+  routes:
+  # /myProduct/product/list -> product/product/list
+    myProduct:
+      path: /myProduct/**
+      serviceId: product
+      sensitiveHeaders:  #携带cookie
+    #简洁鞋码
+#    product: /myProduct/**
+  # 排除某些路由 正则模式
+  ignored-patterns:
+    - /**/product/listForOrder
+#    - /product/product/listForOrder
+#    - /myProduct/product/listForOrder
+management:
+  security:
+    enabled: false #http://localhost:9000/application/routes 查看所有路由映射
