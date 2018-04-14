@@ -1,10 +1,11 @@
 zuul:
+  sensitive-headers: #忽略全部敏感头（全部服务都可传递cookie）
   routes:
   # /myProduct/product/list -> product/product/list
     myProduct:
       path: /myProduct/**
       serviceId: product
-      sensitiveHeaders:  #携带cookie
+#      sensitiveHeaders:  #携带cookie
     #简洁鞋码
 #    product: /myProduct/**
   # 排除某些路由 正则模式
