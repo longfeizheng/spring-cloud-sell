@@ -18,7 +18,12 @@ spring:
       bindings:
         myMessage:
           group: order  #消息的分组
-          content-type: application/json  #在mq中以json形式展示发送的消息
+          content-type: application/json #在mq中以json形式展示发送的消息
+  zipkin:
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      percentage: 1 #所有的数据到发送至zipkin
 #断路器配置
 hystrix:
   command:
@@ -38,3 +43,6 @@ feign:
     enabled: true
 management:
   context-path: /
+logging:
+  level:
+    org.springframework.cloud.netflix.feign: debug
