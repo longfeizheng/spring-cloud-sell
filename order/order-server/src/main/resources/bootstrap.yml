@@ -19,3 +19,22 @@ spring:
         myMessage:
           group: order  #消息的分组
           content-type: application/json  #在mq中以json形式展示发送的消息
+#断路器配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+    getProductInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+#feign 中使用hystrix
+feign:
+  hystrix:
+    enabled: true
+management:
+  context-path: /
