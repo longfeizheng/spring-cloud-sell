@@ -7,10 +7,12 @@ spring:
         git:
           uri: https://github.com/longfeizheng/spring-cloud-sell
           username: i@merryyou.cn
-          password:
+          password: password
           search-paths: config-repo
 #          basedir:
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
