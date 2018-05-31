@@ -1,4 +1,3 @@
-server: 192.168.0.32
 spring:
   application:
     name: product
@@ -6,9 +5,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: admin
-    url: jdbc:mysql://${server}/spring-cloud-sell?characterEncoding=utf-8&userSSL=false
+    url: jdbc:mysql://192.168.0.32/spring-cloud-sell?characterEncoding=utf-8&userSSL=false
   rabbitmq:
-    host: ${server}
+    host: 192.168.0.32
     port: 5672
     username: guest
     password: guest
