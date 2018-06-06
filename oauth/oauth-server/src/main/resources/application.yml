@@ -1,0 +1,8 @@
+ security:
+   oauth2:
+     client:
+       client-id: merryyou
+       client-secret: merryyou
+ logging:
+   level:
+    org.springframework: info
