@@ -3,6 +3,9 @@
      client:
        client-id: merryyou
        client-secret: merryyou
+     authorization:
+       check-token-access: isAuthenticated()
+       token-key-access: permitAll()
  logging:
    level:
     org.springframework: info
