@@ -1,6 +1,9 @@
 package cn.merryyou.oauth.server;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 
 /**
@@ -11,6 +14,22 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * @since 1.0
  */
 @Configuration
-@EnableAuthorizationServer//是的，没做，就这么一个注解
-public class MerryyouAuthorizationServerConfig {
+@EnableAuthorizationServer//
+public class MerryyouAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+
+    /**
+     * 客户端一些配置
+     * @param clients
+     * @throws Exception
+     */
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.inMemory()
+                .withClient("merryyou")
+                .secret(new BCryptPasswordEncoder().encode("merryyou"))
+                .authorizedGrantTypes("authorization_code", "refresh_token","password")
+//                .redirectUris("http://sso-taobao:8083/client1")
+                .scopes("all")
+                .autoApprove(true);
+    }
 }
