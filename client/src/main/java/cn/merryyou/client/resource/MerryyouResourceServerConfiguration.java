@@ -19,6 +19,9 @@ public class MerryyouResourceServerConfiguration extends ResourceServerConfigure
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().antMatchers("/index","/login").permitAll().antMatchers(HttpMethod.GET, "/api")
                 // 拦截用户，必须具有所列权限
-                .hasAuthority("ROLE_USER");
+                .hasAuthority("ROLE_USER")
+                .antMatchers(HttpMethod.GET,"/roleAdmin")
+                .hasAnyAuthority("ROLE_ADMIN")
+                .anyRequest().authenticated();
     }
 }

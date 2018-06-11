@@ -1,11 +1,3 @@
- security:
-   oauth2:
-     client:
-       client-id: merryyou
-       client-secret: merryyou
-     authorization:
-       check-token-access: isAuthenticated()
-       token-key-access: permitAll()
  spring:
    freemarker:
      allow-request-override: false
