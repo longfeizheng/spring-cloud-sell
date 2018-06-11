@@ -1,7 +1,9 @@
 package cn.merryyou.oauth.server;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -21,6 +23,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 @EnableAuthorizationServer//
 public class MerryyouAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     /**
      * 客户端一些配置
@@ -46,6 +51,7 @@ public class MerryyouAuthorizationServerConfig extends AuthorizationServerConfig
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.authenticationManager(authenticationManager);//重要，不然不支持密码模式
         endpoints.tokenStore(jwtTokenStore()).accessTokenConverter(jwtAccessTokenConverter());
     }
 
