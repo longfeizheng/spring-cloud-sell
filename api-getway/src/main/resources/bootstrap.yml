@@ -1,19 +1,19 @@
 spring:
   application:
     name: api-getway
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: CONFIG
-      profile: dev
-  redis:
-    jedis:
-      pool:
-        max-active: 8
-        max-wait: -1
-        min-idle: 0
-        max-idle: 8
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: CONFIG
+#      profile: dev
+#  redis:
+#    jedis:
+#      pool:
+#        max-active: 8
+#        max-wait: -1
+#        min-idle: 0
+#        max-idle: 8
 eureka:
   client:
     service-url:
@@ -30,3 +30,39 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 5000
+zuul:
+  sensitive-headers: #忽略全部敏感头（全部服务都可传递cookie）
+  routes:
+#  # /myProduct/product/list -> product/product/list
+#    myProduct:
+#      path: /myProduct/**
+#      serviceId: product
+    client:
+      path: /myClient/**
+      serviceId: client
+    uaa:
+      path: /uaa/**
+      serviceId: auth
+#      sensitiveHeaders:  #携带cookie
+    #简洁写法
+#    product: /myProduct/**
+  # 排除某些路由 正则模式
+  ignored-patterns:
+    - /**/product/listForOrder
+#    - /product/product/listForOrder
+#    - /myProduct/product/listForOrder
+management:
+  security:
+    enabled: false #http://localhost:9000/application/routes 查看所有路由映射
+security:
+  oauth2:
+    client:
+      client-id: merryyou
+      client-secret: merryyou
+      user-authorization-uri: http://localhost:8085/uaa/oauth/authorize #请求认证的地址
+      access-token-uri: http://localhost:8085/uaa/oauth/token #请求令牌的地址
+#      registered-redirect-uri: http://localhost:8088
+    resource:
+#      token-info-uri:  ${auth-server}/oauth/check_token
+      jwt:
+        key-uri: http://localhost:8085/uaa/oauth/token_key #解析jwt令牌所需要密钥的地址

@@ -2,9 +2,10 @@ package cn.merryyou.oauth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.security.Principal;
 
 /**
  * Created on 2018/4/24 0024.
@@ -28,7 +29,7 @@ public class OauthApplication {
     }
 
     @RequestMapping("/user")
-    public Authentication user(Authentication user){
+    public Principal user(Principal user){
         return user;
     }
 }
