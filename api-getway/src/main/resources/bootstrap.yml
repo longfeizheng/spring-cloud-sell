@@ -59,10 +59,10 @@ security:
     client:
       client-id: merryyou
       client-secret: merryyou
-      user-authorization-uri: http://localhost:8085/uaa/oauth/authorize #请求认证的地址
-      access-token-uri: http://localhost:8085/uaa/oauth/token #请求令牌的地址
+      user-authorization-uri: http://localhost:8089/oauth/authorize #请求认证的地址
+      access-token-uri: http://localhost:8089/oauth/token #请求令牌的地址
 #      registered-redirect-uri: http://localhost:8088
     resource:
 #      token-info-uri:  ${auth-server}/oauth/check_token
       jwt:
-        key-uri: http://localhost:8085/uaa/oauth/token_key #解析jwt令牌所需要密钥的地址
+        key-uri: http://localhost:8089/oauth/token_key #解析jwt令牌所需要密钥的地址

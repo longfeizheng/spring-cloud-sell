@@ -1,27 +1,21 @@
- spring:
-   freemarker:
-     allow-request-override: false
-     allow-session-override: false
-     cache: true
-     charset: UTF-8
-     check-template-location: true
-     content-type: text/html
-     enabled: true
-     expose-request-attributes: false
-     expose-session-attributes: false
-     expose-spring-macro-helpers: true
-     prefer-file-system-access: true
-     suffix: .ftl
-     template-loader-path: classpath:/templates/
- server:
-   servlet:
-     context-path: /uaa
-# eureka:
-#   client:
-#     service-url:
-#       defaultZone: http://localhost:8761/eureka/
-#   instance:
-#     prefer-ip-address: true
- logging:
-   level:
-     org.springframework: debug
+spring:
+  freemarker:
+    allow-request-override: false
+    allow-session-override: false
+    cache: true
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: true
+    prefer-file-system-access: true
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+server:
+  servlet:
+    context-path: /uaa
+logging:
+  level:
+    org.springframework: debug
